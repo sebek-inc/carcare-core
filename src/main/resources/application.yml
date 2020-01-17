@@ -11,8 +11,8 @@ spring:
   data:
     mongodb:
       database: ${DB_NAME:carcare}
-      #username: ${DB_USERNAME:~}
-      #password: ${DB_PASSWORD:~}
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
       host: ${DB_HOST:localhost}
       port: ${DB_PORT}
 
