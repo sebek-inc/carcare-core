@@ -2,10 +2,12 @@ package inc.sebec.carcare.core.controller;
 
 import java.util.Set;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import inc.sebec.carcare.core.dto.request.LoginRequest;
@@ -18,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping(API.V1.AUTH)
 @RequiredArgsConstructor
 public class AuthController {
 	private final UserDetailsRepository repository;
@@ -27,6 +29,7 @@ public class AuthController {
 
 
 	@PostMapping("signup/user")
+	@ResponseStatus(HttpStatus.CREATED)
 	public Mono<UserDetail> createUser(@RequestBody UserDetail user) {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		user.setAuthorities(Set.of(new Role("ROLE_USER")));
@@ -34,6 +37,7 @@ public class AuthController {
 	}
 
 	@PostMapping("signup/admin")
+	@ResponseStatus(HttpStatus.CREATED)
 	public Mono<UserDetail> createAdmin(@RequestBody UserDetail user) {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		user.setAuthorities(Set.of(new Role("ROLE_ADMIN")));

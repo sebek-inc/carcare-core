@@ -1,0 +1,10 @@
+token:
+  secret:
+    key: secretKey
+  expiration:
+    time: 3600000
+
+spring:
+  data:
+    mongodb:
+      database: carcare-test1
