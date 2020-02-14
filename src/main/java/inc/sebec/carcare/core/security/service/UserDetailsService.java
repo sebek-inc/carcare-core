@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import inc.sebec.carcare.core.security.model.UserDetail;
 import inc.sebec.carcare.core.security.repository.UserDetailsRepository;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
@@ -20,5 +21,8 @@ public class UserDetailsService implements ReactiveUserDetailsService {
 						 .map(user -> new User(user.getUsername(), user.getPassword(), user.getAuthorities()));
 	}
 
+	public Mono<UserDetail> findUserDetailByUsername(String username) {
+		return repository.findByUsername(username);
+	}
 
 }

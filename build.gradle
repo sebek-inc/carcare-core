@@ -28,8 +28,10 @@ dependencies {
     compile 'com.github.cloudyrock.mongock:mongock-spring:3.2.1.BETA'
     compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
     compile "javax.xml.bind:jaxb-api:2.3.1"
+    compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.6'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    testCompile group: 'de.flapdoodle.embed', name: 'de.flapdoodle.embed.mongo', version: '2.2.0'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
