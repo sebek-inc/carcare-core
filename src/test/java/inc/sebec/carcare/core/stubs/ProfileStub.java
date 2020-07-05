@@ -1,7 +1,7 @@
 package inc.sebec.carcare.core.stubs;
 
 import inc.sebec.carcare.core.document.Profile;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -10,11 +10,11 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@RequiredArgsConstructor
 @Component
 public class ProfileStub {
 
-    private final UserDetailStub userDetailStub;
+    @Autowired
+    private UserDetailStub userDetailStub;
 
     public Profile getRandomProfile() {
         return Profile.builder()
